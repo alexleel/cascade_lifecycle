@@ -1,0 +1,7 @@
+base_lifecycle_manager:
+  ros__parameters:
+    base_nodes_l:
+    - Simple_cascade_lc_NodeA
+    - Simple_cascade_lc_NodeB
+    timeout_manager_s: 20
+    use_sim_time: false
