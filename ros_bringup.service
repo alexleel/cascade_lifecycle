@@ -1,0 +1,21 @@
+[Unit]
+Description="ros2 bringup Deamon"
+
+[Service]
+User=bringup_user
+Type=idle
+Environment="ROS_DOMAIN_ID=42"
+Environment="ROS_VERSION=2"
+Environment="ROS_PYTHON_VERSION=3"
+Environment="ROS_DISTRO=humble"
+Environment="RMW_IMPLEMENTATION=rmw_cyclonedds_cpp"
+Environment="ROS_LOCALHOST_ONLY=1"
+Environment="CYCLONEDDS_URI=file:///etc/systemd/system/cyclonedds.xml"
+
+ExecStart=/opt/ros/humble/bin/ros2 launch rclcpp_cascade_lifecycle lc_bringup_launch.py
+StartLimitIntervalSec=0
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
